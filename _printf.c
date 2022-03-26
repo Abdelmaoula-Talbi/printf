@@ -1,61 +1,46 @@
 #include "main.h"
-#include <stdlib.h>
-#include <stdarg.h>
 #include <unistd.h>
-#include <string.h>
-#include <stdio.h>
+#include <stddef.h>
 
+/**
+ * _printf - produces output according to a format and write output to the stdout.
+ * @format: character string. The format string is composed of zero or more directives.
+ * Return: the number of characters printed (excluding the null byte).
+ */
 int _printf(const char *format, ...)
 {
-	int i;
+	pr_t prs[] = {
+		{"c", pr_char},
+		{"s", pr_string},
+		{NULL, NULL}
+	};
+	int i, j, char_count = 0;
 	va_list ap;
-	char buff[100], temp[100];
-	char *str;
-	int j = 0;
 
 	va_start(ap, format);
-
 	i = 0;
-	while (format[i] != '\0' && format != NULL)
+	while (format != NULL && format[i] != '\0')
 	{
-		if (format[i] == '%')
+		if (format[i] != '%' && format[i - 1] != '%')
 		{
-			i++;
-			switch (format[i])
-			{
-				case 'c': {
-				buff[j] = va_arg(ap, int);
-				j++;
-				break;
-				}
-				case 's': {
-				str = va_arg(ap, char*);
-				strcpy(&buff[j], str);
-				j = j + strlen(str);
-				break;
-				}
-				case 'd': {
-				_itoa(va_arg(ap, int), temp, 10);
-				strcpy(&buff[j], temp);
-				j = j + strlen(temp);
-				break;
-				}
-				case 'i': {
-				_itoa(va_arg(ap, int), temp, 10);
-				strcpy(&buff[j], temp);
-				j = j + strlen(temp);
-				break;
-				}
-			}
+			write(1, &format[i], 1);
+			char_count++;
 		}
 		else
 		{
-			buff[j] = format[i];
-			j++;
+			j = 0;
+			while (prs[j].c != NULL)
+			{
+				if (format[i + 1] == *(prs[j].c))
+				{
+					char_count += prs[j].func(ap);
+					break;
+				}
+				j++;
+			}
 		}
 		i++;
 	}
-	write(1, buff, j);
 	va_end(ap);
-	return (j);
+	return (char_count);
 }
