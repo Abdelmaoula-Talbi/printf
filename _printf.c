@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 			write(1, &format[i], 1);
 			char_count++;
 		}
-		else
+		else if (format[i] == '%')
 		{
 			j = 0;
 			while (prs[j].c != NULL)
@@ -36,10 +36,25 @@ int _printf(const char *format, ...)
 					char_count += prs[j].func(ap);
 					break;
 				}
+				else if (format[i + 1] != 'c' && format[i + 1] != 's')
+				{
+					if (format[i + 1] == '%')
+					{
+						write(1, &format[i + 1], 1);
+						char_count++;
+						break;
+					}
+					else if (format[i + 1] == ' ')
+					{
+						write(1, &format[i + 1], 1);
+						char_count++;
+						break;
+					}
+				}
 				j++;
 			}
 		}
-		i++;
+	i++;
 	}
 	va_end(ap);
 	return (char_count);
