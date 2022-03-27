@@ -13,6 +13,7 @@ int pr_char(va_list c)
 {
 	int count = 0;
 	char ch = va_arg(c, int);
+
 	write(1, &ch, 1);
 	count += 1;
 	return (count);
@@ -28,6 +29,7 @@ int pr_string(va_list str)
 {
 	int count = 0;
 	char *s;
+
 	s = va_arg(str, char *);
 	if (s == NULL)
 	{
