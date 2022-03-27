@@ -33,7 +33,7 @@ int pr_string(va_list str)
 	s = va_arg(str, char *);
 	if (s == NULL)
 	{
-		return (NULL);
+		return (-1);
 	}
 	write(1, s, strlen(s));
 	count += strlen(s);
