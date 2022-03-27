@@ -3,8 +3,8 @@
 #include <stddef.h>
 
 /**
- * _printf - produces output according to a format and write output to the stdout.
- * @format: character string. The format string is composed of zero or more directives.
+ * _printf - produces output according to format and write output to stdout.
+ * @format: character string composed of zero or more directives.
  * Return: the number of characters printed (excluding the null byte).
  */
 int _printf(const char *format, ...)
