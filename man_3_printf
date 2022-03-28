@@ -1,6 +1,6 @@
 _PRINTF - Manual page
 
-NAME | SYNOPSIS | DESCRIPTION | RETURN VALUE | EXAMPLES
+NAME | SYNOPSIS | DESCRIPTION | RETURN VALUE | EXAMPLES | COLOPHON | DATE
 
 NAME
 	_printf
@@ -76,3 +76,7 @@ EXAMPLES
 COLOPHON
 
 	This page is part of the project "printf", done by Abdelmaoula Talbi, and this project is a part of the curriculum of the Holberton school.
+
+DATE
+
+	Made on march 2022.
