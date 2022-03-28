@@ -1,4 +1,5 @@
-# printf
+# _printf: C function similar to the C standard function printf.
+
 
 ## Prototype
 
