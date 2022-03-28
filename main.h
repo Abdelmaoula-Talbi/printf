@@ -13,9 +13,11 @@ typedef struct print_t
 	char *c;
 	int (*func)(va_list);
 } pr_t;
-
+void print_rev(char *s);
 int _printf(const char *format, ...);
 int pr_char(va_list c);
 int pr_string(va_list str);
+char *_itoa(int n, char *);
+int pr_integer(va_list i);
 
 #endif
