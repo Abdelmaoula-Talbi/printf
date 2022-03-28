@@ -6,7 +6,7 @@ _printf(const char *format, ...);
 
 ## Overview
 
-_printf is a C function similar to the standard C function printf that produces output according to a format string.
+_printf is a C function similar to the standard C function printf that produces output according to a format string. I have to notice that many options of the C standard function printf are not present in the _printf function. The flag characters, the field width, the precision and the length modifiers are not provided too.
 
 ## Usage
 
@@ -17,9 +17,13 @@ On error, it returns a negative value.
 
 ## Format specifiers
 
-%c : prints a character to the stdout.(corresponding function: pr_char in the file pr_func.c)
+%c : prints a character to the stdout.(corresponding function: pr_char in the file pr_func.c).
+
+
 %s : prints an array of characters excluding the null byte character to the stdout. (corresponding function: pr_string in the file pr_func.c).
-%d and %i : print an integer in the decimal base to the stdout. (corresponding function : pr_integer in the file pr_func.c)
+
+%d and %i : print an integer in the decimal base to the stdout. (corresponding function : pr_integer in the file pr_func.c).
+
 %%: prints a percent symbol to the stdout. (corresponding function : _printf in the _printf.c file).
 
 ## Examples
