@@ -3,10 +3,44 @@
 #include <unistd.h>
 #include <string.h>
 
+void print_rev(char *s)
+{
+	int i;
+	int j;
+
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		i = i;
+	}
+	for (j = i - 1; j >= 0; j--)
+	{
+		write(1, &s[j], 1);
+	}
+}
+
+char *_itoa(int n, char s[100])
+{
+	int i, sign;
+
+	if ((sign = n) < 0)
+		n = -n;
+	i = 0;
+	while ((n /= 10) > 0)
+	{
+		s[i] = (n % 10) + '0';
+		n = n / 10;
+		i++;
+	}
+	if (sign < 0)
+		s[i++] = '-';
+	s[i] = '\0';
+	print_rev(s);
+	return (s);
+}
+	
 /**
  * pr_char - print a char to stdout.
  * @c: argument char to print.
- * @count: number of characters printed.
  * Return: count.
  */
 int pr_char(va_list c)
@@ -22,7 +56,6 @@ int pr_char(va_list c)
 /**
  * pr_string - print a string to the stdout.
  * @str: argument string to print.
- * @count: number of characters in the string printed.
  * Return: count.
  */
 int pr_string(va_list str)
@@ -35,6 +68,23 @@ int pr_string(va_list str)
 	{
 		s = "";
 	}
+	write(1, s, strlen(s));
+	count += strlen(s);
+	return (count);
+}
+
+/**
+ * pr_integer - print a number in string format.
+ * @n: argument number to print.
+ * Return: count.
+ */
+int pr_integer(va_list i)
+{
+	int count = 0;
+	int number = va_arg(i, int);
+	char s[100];
+
+	_itoa(number, s);
 	write(1, s, strlen(s));
 	count += strlen(s);
 	return (count);
