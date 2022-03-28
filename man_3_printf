@@ -1,0 +1,78 @@
+_PRINTF - Manual page
+
+NAME | SYNOPSIS | DESCRIPTION | RETURN VALUE | EXAMPLES
+
+NAME
+	_printf
+
+SYNOPSIS
+
+	#include "main.h"
+
+	int _printf(const char *format, ...);
+
+DESCRIPTION
+
+	The function _printf produces output according to a format as described below.
+
+	The format string specifies how subsequent arguments (or
+       	arguments accessed via the variable-length argument facilities of
+       	stdarg(3)) are converted for output.
+
+	The format string is a character string composed of zero or more directives:
+	ordinary characters (not %), which
+       	are copied unchanged to the output stream; and conversion
+       	specifications, each of which results in fetching zero or more
+       	subsequent arguments.  Each conversion specification is
+       	introduced by the character %, and ends with a conversion
+       	specifier.
+
+	Conversion specifiers
+       	A character that specifies the type of conversion to be applied.
+       	The conversion specifiers and their meanings are:
+
+d, i   	The int argument is converted to signed decimal notation.
+
+c	the int argument is converted to an unsigned char, and the resulting character is
+	written.
+
+s	the const char * argument is expected to be a pointer to an array of character type
+        (pointer to a string).  Characters from the array are
+        written up to (but not including) a terminating null byte ('\0').
+
+RETURN VALUE
+	
+	Upon successful return, _printf returns the number of
+       	characters printed (excluding the null byte used to end output to
+       	strings).
+	If an output error is encountered, a negative value is returned.
+
+EXAMPLES
+
+	To print a string:
+
+	#include "main.h"
+	_printf("%s", "string to print");
+	or
+	_printf("%s", <name of the variable of type char *>);
+
+	To print a simple character:
+	
+	#include "main.h"
+	_printf("%c", 'character to print');
+	or
+	_printf("%c", <name of the variable of type char>);
+
+	To print a string with ordinary characters (not %):
+	
+	#include "main.h"
+	_printf("string with ordinary characters to print");
+	
+	To print an integer:
+	
+	#include "main.h"
+	_printf("%d(or i)", integer or <name of the variable of type integer>);
+
+COLOPHON
+
+	This page is part of the project "printf", done by Abdelmaoula Talbi, and this project is a part of the curriculum of the Holberton school.
