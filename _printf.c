@@ -12,6 +12,8 @@ int _printf(const char *format, ...)
 	pr_t prs[] = {
 		{"c", pr_char},
 		{"s", pr_string},
+		{"d", pr_integer},
+		{"i", pr_integer},
 		{NULL, NULL}
 	};
 	int i, j, char_count = 0;
