@@ -1,28 +1,28 @@
 ## printf
 
-#Prototype
+# Prototype
 
 _printf(const char *format, ...);
 
-#Overview
+# Overview
 
 _printf is a C function similar to the standard C function printf that produces output according to a format string.
 
-#Usage
+# Usage
 
 include "main.h"
 
 Upon successful return, it returns the number of characters printed.
 On error, it returns a negative value.
 
-#Format specifiers
+# Format specifiers
 
 %c : prints a character to the stdout.(corresponding function: pr_char in the file pr_func.c)
 %s : prints an array of characters excluding the null byte character to the stdout. (corresponding function: pr_string in the file pr_func.c).
 %d and %i : print an integer in the decimal base to the stdout. (corresponding function : pr_integer in the file pr_func.c)
 %%: prints a percent symbol to the stdout. (corresponding function : _printf in the _printf.c file).
 
-#Examples
+# Examples
 
 1. #include "main.h"
 
@@ -46,17 +46,19 @@ This is a test number 1
 4. _printf("%s\n", "Hello worlD"); --> prints Hello worlD followed by a new line.
 
 
-#Files and Github used for the project
+# Files used for the project
 
-Files: _printf.c, pr_func.c, main.h.
+ _printf.c, pr_func.c, main.h.
+
+# Github account
 
 Github: https://github.com/AbdelmaoulaAbdou/printf
 
-#About
+# About
 
 Created and compiled on Ubuntu 20.04 LTS with gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
 
-#Author
+# Author
 
 Abdelmaoula Talbi
 
